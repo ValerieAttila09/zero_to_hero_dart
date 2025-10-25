@@ -27,7 +27,9 @@ void insertData(
   data.add({"id": id, "nama": nama, "umur": umur, "email": email});
 }
 
-Future<List<Map<String, dynamic>>> showMenu(List<Map<String, dynamic>> users) async {
+Future<List<Map<String, dynamic>>> showMenu(
+  List<Map<String, dynamic>> users,
+) async {
   print("Pilih menu :");
   print("1. Tambah data");
   print("2. Lihat data");
@@ -60,6 +62,42 @@ Future<List<Map<String, dynamic>>> showMenu(List<Map<String, dynamic>> users) as
         print("Data berhasil ditambahkan!\n");
         return users;
       }
+    case 2:
+      print("Lihat data");
+      for (var user in users) {
+        print(
+          "\nData user ke-${users.indexOf(user) + 1} :\n" +
+              "ID : ${user["id"]}\nNama : ${user["nama"]}|nEmail : ${user["email"]}\nUmur : ${user["umur"]}\n\n",
+        );
+      }
+      print("Data berhasil dilihat!\n");
+      return users;
+    case 3:
+      print("Hapus data");
+      stdout.write("Masukkan ID yang ingin dihapus : ");
+      String? inp_id = stdin.readLineSync()!;
+      int index = users.indexWhere((user) => user["id"] == inp_id);
+      if (index == -1) {
+        print("ID tidak ditemukan!");
+        return users;
+      }
+      users.removeAt(index);
+      print("Data berhasil dihapus!\n");
+      return users;
+    case 4:
+      print("Ubah data");
+      stdout.write("Masukkan ID yang ingin diubah : ");
+      String? inp_id = stdin.readLineSync()!;
+      int index = users.indexWhere((user) => user["id"] == inp_id);
+      if (index == -1) {
+        print("ID tidak ditemukan!");
+        return users;
+      }
+      print("Data berhasil diubah!\n");
+      return users;
+    case 5:
+      print("Keluar");
+      return users;
     default:
       print("Pilihan tidak valid");
       return users;
