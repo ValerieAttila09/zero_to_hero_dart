@@ -16,6 +16,56 @@ bool is_valid_email(String email) {
   return regex.hasMatch(email);
 }
 
+void insertData(
+  List<Map<String, dynamic>> data,
+  String id,
+  String nama,
+  int umur,
+  String email,
+) {
+  print("Tambah data");
+  data.add({"id": id, "nama": nama, "umur": umur, "email": email});
+}
+
+Future<List<Map<String, dynamic>>> showMenu(List<Map<String, dynamic>> users) async {
+  print("Pilih menu :");
+  print("1. Tambah data");
+  print("2. Lihat data");
+  print("3. Hapus data");
+  print("4. Ubah data");
+  print("5. Keluar");
+  stdout.write("Masukkan pilihan : ");
+  int? pilihan = int.parse(stdin.readLineSync()!);
+  switch (pilihan) {
+    case 1:
+      print("Tambah data");
+      print("Masukkan data yang diinginkan :");
+      stdout.write("Masukkan nama : ");
+      String? inp_nama = stdin.readLineSync()!;
+      stdout.write("Masukkan umur : ");
+      int? inp_umur = int.parse(stdin.readLineSync()!);
+      stdout.write("Masukkan email : ");
+      String? inp_email = stdin.readLineSync()!;
+      if (!is_valid_email(inp_email)) {
+        print("Email tidak valid!");
+        return users;
+      } else {
+        insertData(users, generate_id(), inp_nama, inp_umur, inp_email);
+        for (var user in users) {
+          print(
+            "\nData user ke-${users.indexOf(user) + 1} :\n" +
+                "ID : ${user["id"]}\nNama : ${user["nama"]}|nEmail : ${user["email"]}\nUmur : ${user["umur"]}\n\n",
+          );
+        }
+        print("Data berhasil ditambahkan!\n");
+        return users;
+      }
+    default:
+      print("Pilihan tidak valid");
+      return users;
+  }
+}
+
 void main() {
   List<Map<String, dynamic>> users = [];
   final file = File('users.json');
@@ -32,30 +82,7 @@ void main() {
   }
 
   while (true) {
-    stdout.write("Masukkan nama : ");
-    String? inp_nama = stdin.readLineSync()!;
-    stdout.write("Masukkan umur : ");
-    int? inp_umur = int.parse(stdin.readLineSync()!);
-    stdout.write("Masukkan email : ");
-    String? inp_email = stdin.readLineSync()!;
-
-    if (!is_valid_email(inp_email)) {
-      print("Email tidak valid!");
-      break;
-    } else {
-      users.add({
-        "id": generate_id(),
-        "nama": inp_nama.toString(),
-        "umur": inp_umur,
-        "email": inp_email.toString(),
-      });
-    }
-    for (var user in users) {
-      print(
-        "\nData user ke-${users.indexOf(user) + 1} :\n" +
-        "ID : ${user["id"]}\nNama : ${user["nama"]}|nEmail : ${user["email"]}\nUmur : ${user["umur"]}\n\n",
-      );
-    }
+    showMenu(users);
 
     stdout.write("\nTambah data lagi? (y/n) : ");
     String? inp_lagi = stdin.readLineSync()!;
