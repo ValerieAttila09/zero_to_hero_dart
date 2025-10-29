@@ -93,10 +93,30 @@ Future<List<Map<String, dynamic>>> showMenu(
         print("ID tidak ditemukan!");
         return users;
       }
+      stdout.write("Masukkan nama baru : ");
+      String? inp_nama = stdin.readLineSync()!;
+      stdout.write("Masukkan umur baru : ");
+      int? inp_umur = int.parse(stdin.readLineSync()!);
+      stdout.write("Masukkan email baru : ");
+      String? inp_email = stdin.readLineSync()!;
+      if (!is_valid_email(inp_email)) {
+        print("Email tidak valid!");
+        return users;
+      } else {
+        users[index]["nama"] = inp_nama;
+        users[index]["umur"] = inp_umur;
+        users[index]["email"] = inp_email;
+      }
+      for (var user in users) {
+        print(
+          "\nData user ke-${users.indexOf(user) + 1} :\n" +
+              "ID : ${user["id"]}\nNama : ${user["nama"]}|nEmail : ${user["email"]}\nUmur : ${user["umur"]}\n\n",
+        );
+      }
       print("Data berhasil diubah!\n");
       return users;
     case 5:
-      print("Keluar");
+      print("Hasil operasi :");
       return users;
     default:
       print("Pilihan tidak valid");
@@ -122,7 +142,7 @@ void main() {
   while (true) {
     showMenu(users);
 
-    stdout.write("\nTambah data lagi? (y/n) : ");
+    stdout.write("\nMulai operasi lagi? (y/n) : ");
     String? inp_lagi = stdin.readLineSync()!;
     if (inp_lagi == "n") {
       break;
