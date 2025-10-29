@@ -1,0 +1,123 @@
+{
+  "roots": [
+    "dart_fullstack"
+  ],
+  "packages": [
+    {
+      "name": "dart_fullstack",
+      "version": "1.0.0",
+      "dependencies": [
+        "postgres"
+      ],
+      "devDependencies": []
+    },
+    {
+      "name": "postgres",
+      "version": "3.5.7",
+      "dependencies": [
+        "async",
+        "buffer",
+        "charcode",
+        "collection",
+        "crypto",
+        "meta",
+        "pool",
+        "sasl_scram",
+        "stack_trace",
+        "stream_channel"
+      ]
+    },
+    {
+      "name": "pool",
+      "version": "1.5.2",
+      "dependencies": [
+        "async",
+        "stack_trace"
+      ]
+    },
+    {
+      "name": "meta",
+      "version": "1.17.0",
+      "dependencies": []
+    },
+    {
+      "name": "charcode",
+      "version": "1.4.0",
+      "dependencies": []
+    },
+    {
+      "name": "async",
+      "version": "2.13.0",
+      "dependencies": [
+        "collection",
+        "meta"
+      ]
+    },
+    {
+      "name": "stream_channel",
+      "version": "2.1.4",
+      "dependencies": [
+        "async"
+      ]
+    },
+    {
+      "name": "stack_trace",
+      "version": "1.12.1",
+      "dependencies": [
+        "path"
+      ]
+    },
+    {
+      "name": "sasl_scram",
+      "version": "0.1.1",
+      "dependencies": [
+        "buffer",
+        "collection",
+        "crypto",
+        "saslprep"
+      ]
+    },
+    {
+      "name": "collection",
+      "version": "1.19.1",
+      "dependencies": []
+    },
+    {
+      "name": "crypto",
+      "version": "3.0.6",
+      "dependencies": [
+        "typed_data"
+      ]
+    },
+    {
+      "name": "buffer",
+      "version": "1.2.3",
+      "dependencies": []
+    },
+    {
+      "name": "path",
+      "version": "1.9.1",
+      "dependencies": []
+    },
+    {
+      "name": "saslprep",
+      "version": "1.0.3",
+      "dependencies": [
+        "unorm_dart"
+      ]
+    },
+    {
+      "name": "typed_data",
+      "version": "1.4.0",
+      "dependencies": [
+        "collection"
+      ]
+    },
+    {
+      "name": "unorm_dart",
+      "version": "0.3.2",
+      "dependencies": []
+    }
+  ],
+  "configVersion": 1
+}
