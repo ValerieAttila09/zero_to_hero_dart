@@ -7,3 +7,4 @@ environment:
 
 dependencies:
   postgres: ^3.0.2
+  mysql1: ^0.20.0
